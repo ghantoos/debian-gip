@@ -1,3 +1,31 @@
+gip (1.7.0-1-1) unstable; urgency=low
+
+  * New maintainer. (Closes: #547045)
+  * New upstream release.
+  * Menu entry has been added in "Applications->Accessories". (Closes: #474969)
+  * debian/rules:
+    - Simplified the rules file using dh7 features.
+  * debian/control:
+    - Updated project homepage.
+    - Updated debhelper dependency to (>= 7.0.50~).
+    - Added dependency on quilt (>= 0.46-7).
+  * debian/copyright:
+    - Linked to GPL-2.
+  * debian/compat:
+    - Updated debhelper compatibility to 7.
+  * debian/patches/:
+    - Added 10-gen-sh.diff: to remove the timestamps modification of the 
+      po/gip.pot file.
+    - Added 20-build-sh.diff: to correct installation path in the build.sh 
+      file, and remove uselessly linked libraries.
+    - Added 30-gip-desktop.diff: to correct the path in the .desktop file, 
+      and remove the "Encoding" key.
+  * Added a debian/watch file.
+  * Added a debian/gip.dirs file.
+  * Standards-Version bumped to 3.8.3.
+
+ -- Ignace Mouzannar <mouzannar@gmail.com>  Tue, 06 Oct 2009 11:35:57 +0200
+
 gip (1.6.1.1-1.1) unstable; urgency=low
 
   * Non-maintainer upload.

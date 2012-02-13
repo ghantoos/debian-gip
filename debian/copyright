@@ -1,11 +1,11 @@
 This package was debianized by Khalid El Fathi <invent@edena-fr.org> on
 Mon, 25 Oct 2004 22:27:20 +0200.
 
-It was downloaded from http://www.debain.org/software/gip/
+It was downloaded from http://code.google.com/p/gip/
 
 Upstream Author: Samuel Abels <spam@debain.org>
 
-Copyright: Copyright (c) 2004-2006, Samuel Abels <spam@debain.org>
+Copyright: Copyright (c) 2004-2009, Samuel Abels <spam@debain.org>
 
 License:
 
@@ -24,4 +24,4 @@ License:
    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301 USA
 
 On Debian systems, the complete text of the GNU General
-Public License can be found in `/usr/share/common-licenses/GPL'.
+Public License can be found in `/usr/share/common-licenses/GPL-2'.

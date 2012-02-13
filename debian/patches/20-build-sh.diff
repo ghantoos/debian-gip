@@ -1,0 +1,66 @@
+Description:
+ - Corrects installation path in the build.sh file
+ - Removes uselessly linked libraries in the LFLAGS variable, as none of 
+   their symbols are used.
+Author: Ignace Mouzannar <mouzannar@gmail.com>
+Last-Update: 2009-10-02
+
+--- a/build.sh
++++ b/build.sh
+@@ -153,15 +153,14 @@
+ INST_BINDIR="$INST_PREFIX/bin/"
+ INST_LIBDIR="$INST_PREFIX/lib/$EXECUTABLE"
+ INST_LOCALEDIR="$INST_PREFIX/share/locale"
+-INST_PIXMAPDIR="$INST_PREFIX/lib/$EXECUTABLE"
+-INST_DOCDIR="$INST_PREFIX/doc/$EXECUTABLE"
+-INST_GNOMEDOCDIR="$INST_PREFIX/share/gnome/help/$EXECUTABLE/C"
++INST_PIXMAPDIR="$INST_PREFIX/share/$EXECUTABLE"
++INST_DOCDIR="$INST_PREFIX/share/doc/$EXECUTABLE"
+ INST_MIME_XML="$INST_PREFIX/share/mime/packages/"
+ INST_MIME_KEY="$INST_PREFIX/share/mime-info/"
+ INST_MENU_XDG="$INST_PREFIX/share/applications/"
+-INST_ICON=$INST_PREFIX/share/icons/hicolor
+-INST_ICON_LOWRES=$INST_ICON/32x32/apps
+-INST_ICON_HIGHRES=$INST_ICON/48x48/apps
++INST_ICON="$INST_PREFIX/share/icons/hicolor"
++INST_ICON_LOWRES="$INST_ICON/32x32/apps"
++INST_ICON_HIGHRES="$INST_ICON/48x48/apps"
+ 
+ # Preprocessor macros:
+ MACROS="PACKAGE_LIB_DIR=$INST_LIBDIR/\
+@@ -250,7 +249,8 @@
+ ###############################################################################
+ # Compiler/Linker options.
+ CFLAGS="-DHAVE_CONFIG_H -I. -I.. `pkg-config $REQUIRED_LIBS --cflags`"
+-LFLAGS=`pkg-config $REQUIRED_LIBS --libs`
++#LFLAGS=`pkg-config $REQUIRED_LIBS --libs`
++LFLAGS="-lgtkmm-2.4 -latkmm-1.6 -lgtk-x11-2.0 -lglibmm-2.4 -lglib-2.0 -lsigc-2.0"
+ 
+ if [ "$PLUGINDIRS" != "" ]; then
+   build_plugins_all $PLUGINDIRS || exit 1
+@@ -288,8 +288,8 @@
+ 
+ echo Creating directories...
+ CREATEDIRS="$INST_BINDIR $INST_LIBDIR $INST_PIXMAPDIR $INST_DOCDIR"
+-CREATEDIRS="$CREATEDIRS $INST_LOCALEDIR $INST_GNOMEDOCDIR"
+-CREATEDIRS="$CREATEDIRS $INST_MENU_XDG $INST_MIME_XML $INST_GNOMEDOCDIR"
++CREATEDIRS="$CREATEDIRS $INST_LOCALEDIR"
++CREATEDIRS="$CREATEDIRS $INST_MENU_XDG $INST_MIME_XML"
+ CREATEDIRS="$CREATEDIRS $INST_ICON_LOWRES $INST_ICON_HIGHRES"
+ make_installdirs.sh $CREATEDIRS                       || exit 1
+ 
+@@ -311,14 +311,6 @@
+   cp $INST_IN_DOCDIR $INST_DOCDIR                     || exit 1
+ fi
+ 
+-echo Installing GNOME documentation in $INST_GNOMEDOCDIR...
+-if [ -d "$INST_GNOMEDOCDIR" -a -w "$INST_GNOMEDOCDIR" ]; then
+-  cp -r "$INST_IN_GNOMEDOCDIR" "$INST_GNOMEDOCDIR"
+-else
+-  echo "WARNING: GNOME documentation directory not found or it is not"  >&2
+-  echo "         writeable! Skipping GNOME documentation installation." >&2
+-fi
+-
+ echo Installing localisation files in $INST_LOCALEDIR...
+ if [ "$INST_IN_LOCALEDIR" != "" ]; then
+   install_locales.sh -p $INST_LOCALEDIR -d $EXECUTABLE $INST_IN_LOCALEDIR \

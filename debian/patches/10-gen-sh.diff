@@ -1,0 +1,18 @@
+Description: Removes the timestamps modification of the po/gip.pot file
+Author: Ignace Mouzannar <mouzannar@gmail.com>
+Last-Update: 2009-10-02
+
+--- a/po/gen.sh
++++ b/po/gen.sh
+@@ -6,11 +6,6 @@
+ # Ger a list of all files that are potentially holding translatable strings.
+ FILES=`find ../src/ -name "*.cc" -o -name "*.c"`
+ 
+-# Re-generate (merge) the potfile.
+-touch gip.pot
+-xgettext -jC -k"_" -k"N_" --from-code ISO-8859-1 -o gip.pot $FILES \
+- || exit 1
+-
+ # Generate .mo files from all .po files.
+ find . -name "*.po" | while read POFILE; do
+   MOFILE=`echo $POFILE | sed 's/\.po$/\.mo/'`

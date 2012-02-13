@@ -1,14 +1,14 @@
 Source: gip
 Section: gnome
 Priority: optional
-Maintainer: Khalid El Fathi <invent@edena-fr.org>
-Build-Depends: debhelper (>= 5), intltool, libgtkmm-2.4-dev
-Standards-Version: 3.7.3
-Homepage: http://www.debain.org/software/gip/
+Maintainer: Ignace Mouzannar <mouzannar@gmail.com>
+Build-Depends: debhelper (>= 7.0.50~), quilt (>= 0.46-7), intltool, libgtkmm-2.4-dev
+Standards-Version: 3.8.3
+Homepage: http://code.google.com/p/gip/
 
 Package: gip
 Architecture: any
-Depends: ${shlibs:Depends}
+Depends: ${misc:Depends}, ${shlibs:Depends}
 Description: IP calculator for GNOME desktop environment
  Gip provides system administrators with tools for IP address based
  calculations. For example, an administrator who needs to find out which IP

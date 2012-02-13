@@ -1,0 +1,26 @@
+Description: 
+ - Corrects path in .desktop file
+ - Removes the "Encoding" key.
+Author: Ignace Mouzannar <mouzannar@gmail.com>
+Last-Update: 2009-10-02
+
+--- a/gip.desktop.in
++++ b/gip.desktop.in
+@@ -1,15 +1,14 @@
+ [Desktop Entry]
+-Encoding=UTF-8
+ Name=%APP_NAME% IP Address Calculator
+ Name[de]=%APP_NAME% IP-Adress-Rechner
+ GenericName=IP Adress Calculator
+ GenericName[de]=IP-Adress-Rechner
+ Comment=Calculate IP addresses and networks
+ Comment[de]=IP-Adressen und Netzbereiche berechnen
+-Exec=%INSTALL_BIN%%APP_SYSNAME% %U
++Exec=/usr/bin/gip %U
+ StartupNotify=true
+ Terminal=false
+-Icon=%INSTALL_LIB%/calculator.png
++Icon=/usr/share/gip/calculator.png
+ Type=Application
+ Categories=GNOME;GTK;Utility;
+ MimeType=application/x-%APP_SYSNAME%;

@@ -2,12 +2,14 @@ Description:
  - Corrects installation path in the build.sh file
  - Removes uselessly linked libraries in the LFLAGS variable, as none of 
    their symbols are used.
+ - Corrects linking paths (used to include the debian/gip/ build directory).
+   (LP: #565187)
 Author: Ignace Mouzannar <mouzannar@gmail.com>
-Last-Update: 2009-10-02
+Last-Update: 2010-09-01
 
 --- a/build.sh
 +++ b/build.sh
-@@ -153,15 +153,14 @@
+@@ -153,21 +153,20 @@
  INST_BINDIR="$INST_PREFIX/bin/"
  INST_LIBDIR="$INST_PREFIX/lib/$EXECUTABLE"
  INST_LOCALEDIR="$INST_PREFIX/share/locale"
@@ -27,7 +29,17 @@ Last-Update: 2009-10-02
 +INST_ICON_HIGHRES="$INST_ICON/48x48/apps"
  
  # Preprocessor macros:
- MACROS="PACKAGE_LIB_DIR=$INST_LIBDIR/\
+-MACROS="PACKAGE_LIB_DIR=$INST_LIBDIR/\
+-:PACKAGE_PIXMAPS_DIR=$INST_PIXMAPDIR/\
+-:PACKAGE_LOCALE_DIR=$INST_LOCALEDIR/\
+-:PACKAGE_DOC_DIR=$INST_DOCDIR/\
++MACROS="PACKAGE_LIB_DIR=`echo $INST_LIBDIR |sed \"s/.*debian\/$EXECUTABLE//\"`/\
++:PACKAGE_PIXMAPS_DIR=`echo $INST_PIXMAPDIR |sed \"s/.*debian\/$EXECUTABLE//\"`/\
++:PACKAGE_LOCALE_DIR=`echo $INST_LOCALEDIR |sed \"s/.*debian\/$EXECUTABLE//\"`/\
++:PACKAGE_DOC_DIR=`echo $INST_DOCDIR |sed \"s/.*debian\/$EXECUTABLE//\"`/\
+ :VERSION=$VERSION\
+ :SUBVERSION=$TAGVERSION\
+ :GETTEXTPACKAGE=$EXECUTABLE\
 @@ -250,7 +249,8 @@
  ###############################################################################
  # Compiler/Linker options.

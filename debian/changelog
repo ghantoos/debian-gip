@@ -1,3 +1,18 @@
+gip (1.7.0-1-2) unstable; urgency=low
+
+  * debian/control:
+    - Bumped Standards-Version to 3.9.1.
+    - Added Vcs-Svn and Vcs-Browser as the package has been added on 
+      collab-maint/ext-main.
+  * debian/patches:
+    - Added 40-init_lock_events.diff: to initialize the lock_events variable
+      to FALSE as it was not initialized. (Closes: #576416)
+      Thank you Frank Dean <frank-lists@smartpixie.com> for providing the patch.
+    - 20-build-sh.diff: updated the patch to correct linking paths (LP: #565187)
+  * Converted the package to "3.0 (quilt)" source format.
+
+ -- Ignace Mouzannar <mouzannar@gmail.com>  Wed, 01 Sep 2010 00:58:07 +0200
+
 gip (1.7.0-1-1) unstable; urgency=low
 
   * New maintainer. (Closes: #547045)

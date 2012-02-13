@@ -3,7 +3,9 @@ Section: gnome
 Priority: optional
 Maintainer: Ignace Mouzannar <mouzannar@gmail.com>
 Build-Depends: debhelper (>= 7.0.50~), quilt (>= 0.46-7), intltool, libgtkmm-2.4-dev
-Standards-Version: 3.8.3
+Standards-Version: 3.9.1
+Vcs-Svn: svn://svn.debian.org/collab-maint/ext-maint/gip/trunk/
+Vcs-Browser: http://svn.debian.org/viewsvn/collab-maint/ext-maint/gip/trunk/
 Homepage: http://code.google.com/p/gip/
 
 Package: gip

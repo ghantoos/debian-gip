@@ -1,0 +1,51 @@
+Description: Add initialization (to FALSE) of the lock_events variable
+Author: Frank Dean <frank-lists@smartpixie.com>
+Last-Update: 04-04-2010
+--- a/src/gui_ipv4_analyzer.cc
++++ b/src/gui_ipv4_analyzer.cc
+@@ -28,7 +28,7 @@
+ /******************************************************************************
+  * Constructor/Destructor
+  ******************************************************************************/
+-GUIIPv4Analyzer::GUIIPv4Analyzer()
++GUIIPv4Analyzer::GUIIPv4Analyzer() : lock_events(FALSE)
+ {
+ #ifdef _DEBUG_
+   printf("GUIIPv4Analyzer::GUIIPv4Analyzer(): Called.\n");
+--- a/src/gui_ipv4_subnet_calculator.cc
++++ b/src/gui_ipv4_subnet_calculator.cc
+@@ -30,7 +30,8 @@
+  ******************************************************************************/
+ GUIIPv4SubnetCalculator::GUIIPv4SubnetCalculator()
+ : label_range(_("Address range:")),
+-  label_dash("-")
++  label_dash("-"),
++  lock_events(FALSE)
+ {
+   resize(2, 4);
+   set_border_width(6);
+--- a/src/gui_ipv4_subnet_splitter.cc
++++ b/src/gui_ipv4_subnet_splitter.cc
+@@ -32,7 +32,8 @@
+ : label_range(_("Address range:"), 0, 0.5),
+   label_dash("-"),
+   label_pfxlen(_("Subnetted using prefixlength:"), 0, 0.5),
+-  label_maxmatch(_("Showing a maximum of 1000 subnets."), 1, 0.5)
++  label_maxmatch(_("Showing a maximum of 1000 subnets."), 1, 0.5),
++  lock_events(FALSE)
+ {
+   resize(4, 4);
+   set_border_width(6);
+--- a/po/gen.sh
++++ b/po/gen.sh
+@@ -18,8 +18,7 @@
+ echo GETTEXT_PACKAGE=gip > ../configure.ac || exit 1
+ touch POTFILES.in                          || exit 1
+ intltool-update -m                         || exit 1
+-if [ -e missing ]; then
+-  mv missing POTFILES.in                   || exit 1
+-fi
++
++rm -f missing
+ 
+ rm ../configure.ac

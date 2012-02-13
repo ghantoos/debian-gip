@@ -10,7 +10,7 @@ else
 endif
 
 %:
-	dh $@ --with quilt
+	dh $@
 
 override_dh_auto_install:
 	./build.sh --install --prefix $(CURDIR)/debian/gip/usr

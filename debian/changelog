@@ -1,3 +1,21 @@
+gip (1.7.0-1-3) unstable; urgency=low
+
+  * debian/patches:
+    - 50-installer-build_files-sh.diff: Fix placement of libs in linking stages
+      for GCC 4.6. Thank you Daniel T Chen <crimsun@ubuntu.com> for providing
+      this patch. (Closes: 641844) (LP: #771081)
+    - 60-binary-hex-network-update.diff: Adds update signals to binary and hex
+      "network" fields when user updates "Network mask" or "Prefix length".
+      (LP: #704348)
+  * debian/control:
+    - Removed dependency on quilt.
+    - Bumped Standards-Version to 3.9.2.
+    - Added DM-Upload-Allowed field.
+  * debian/watch:
+    - Updated to use googlecode.debian.net redirector.
+
+ -- Ignace Mouzannar <mouzannar@gmail.com>  Sun, 20 Nov 2011 01:06:59 +0100
+
 gip (1.7.0-1-2) unstable; urgency=low
 
   * debian/control:

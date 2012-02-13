@@ -1,0 +1,29 @@
+Description: Fix placement of libs in linking stages for GCC 4.6
+Author: Daniel T Chen <crimsun@ubuntu.com>
+Reviewed-by: Daniel T Chen <crimsun@ubuntu.com>
+Origin: Ubuntu
+Forwarded: no
+Bug-Ubuntu: https://bugs.launchpad.net/ubuntu/+source/gip/+bug/771081
+Last-Updated: 2011-09-15
+
+Index: gip-1.7.0-1/installer/build_files.sh
+===================================================================
+--- gip-1.7.0-1.orig/installer/build_files.sh	2011-09-16 14:33:30.000000000 -0400
++++ gip-1.7.0-1/installer/build_files.sh	2011-09-16 14:34:33.000000000 -0400
+@@ -122,14 +122,14 @@
+ if [ "$SHARED" = "" ]; then
+   # Link as an executable.
+   set -x
+-  g++ $CFLAGS $LFLAGS -o $OUTFILE $OBJECTFILES
++  g++ $CFLAGS -o $OUTFILE $OBJECTFILES $LFLAGS
+   ERR="$?"
+   set +x
+ else
+   # Link as a shared library.
+   SHAREDNAME=`echo $OUTFILE | sed 's/\..*//'`
+   set -x
+-  g++ -shared -Wl,-soname,$SHAREDNAME $CFLAGS $LFLAGS -o $OUTFILE $OBJECTFILES
++  g++ -shared -Wl,-soname,$SHAREDNAME $CFLAGS -o $OUTFILE $OBJECTFILES $LFLAGS
+   ERR="$?"
+   set +x
+ fi

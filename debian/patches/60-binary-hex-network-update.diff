@@ -1,0 +1,29 @@
+Description: Adds update signals to binary and hex "network" fields when user
+updates "Network mask" or "Prefix length".
+Author: Ignace Mouzannar <mouzannar@gmail.com>
+Bug-Ubuntu: https://bugs.launchpad.net/ubuntu/+source/gip/+bug/704348
+Last-Update: 2011-11-19
+--- a/src/dispatcher.cc
++++ b/src/dispatcher.cc
+@@ -124,8 +124,10 @@
+   mainwindow->ipv4_analyzer.set_output_hosts_all(numhosts_all);
+   mainwindow->ipv4_analyzer.set_output_network(ip & mask);
+   mainwindow->ipv4_analyzer.set_output_broadcast(broadcast);
++  mainwindow->ipv4_analyzer.set_output_bin_network(ip & mask);
+   mainwindow->ipv4_analyzer.set_output_bin_mask(mask);
+   mainwindow->ipv4_analyzer.set_output_bin_broadcast(broadcast);
++  mainwindow->ipv4_analyzer.set_output_hex_network(ip & mask);
+   mainwindow->ipv4_analyzer.set_output_hex_mask(mask);
+   mainwindow->ipv4_analyzer.set_output_hex_broadcast(broadcast);
+   mainwindow->unlock_signals();
+@@ -156,8 +158,10 @@
+   mainwindow->ipv4_analyzer.set_output_hosts_all(numhosts_all);
+   mainwindow->ipv4_analyzer.set_output_network(ip & mask);
+   mainwindow->ipv4_analyzer.set_output_broadcast(broadcast);
++  mainwindow->ipv4_analyzer.set_output_bin_network(ip & mask);
+   mainwindow->ipv4_analyzer.set_output_bin_mask(mask);
+   mainwindow->ipv4_analyzer.set_output_bin_broadcast(broadcast);
++  mainwindow->ipv4_analyzer.set_output_hex_network(ip & mask);
+   mainwindow->ipv4_analyzer.set_output_hex_mask(mask);
+   mainwindow->ipv4_analyzer.set_output_hex_broadcast(broadcast);
+   mainwindow->unlock_signals();

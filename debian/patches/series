@@ -2,3 +2,5 @@
 20-build-sh.diff
 30-gip-desktop.diff
 40-init_lock_events.diff
+50-installer-build_files-sh.diff
+60-binary-hex-network-update.diff

@@ -1,0 +1,2 @@
+?package(gip):needs="X11" section="Applications/Network/Monitoring"\
+  title="Gip" command="/usr/bin/gip"

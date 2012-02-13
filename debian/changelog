@@ -1,0 +1,60 @@
+gip (1.6.1.1-1.1) unstable; urgency=low
+
+  * Non-maintainer upload.
+  * Fix double-build FTBFS by calling “./clean.sh” instead of
+    “-$(MAKE) clean” (Closes: #442574).
+  * Remove unneeded “clean” script.
+  * Bump debhelper compatibility from 4 to 5, no changes needed.
+  * Bump Standards-Version from 3.7.2 to 3.7.3, no changes needed.
+  * Move the Homepage from the description to a source field.
+  * Menu transition: Move the menu section from “Apps/Net” to
+    “Applications/Network/Monitoring”.
+
+ -- Cyril Brulebois <cyril.brulebois@enst-bretagne.fr>  Tue, 26 Feb 2008 23:40:07 +0100
+
+gip (1.6.1.1-1) unstable; urgency=low
+
+  * New upstream release.
+  * debian/control: Updated to Standards-Version 3.7.2.
+  * debian/copyright: Updated address of Free Software Foundation.
+  * Added patch "[INTL:sv] Swedish PO-template translation", thanks to Daniel
+    Nylander <yeager@lidkoping.net>; forwarded patch upstream
+    (Closes: bug#343478).
+
+ -- Khalid El Fathi <invent@edena-fr.org>  Wed, 12 Jul 2006 16:04:12 +0200
+
+gip (1.6.0.1-1) unstable; urgency=low
+
+  * New upstream release.
+  * Updated to Standards-Version 3.6.2.
+  * New dependencies after C++ ABI transition (Closes: bug#324756).
+
+ -- Khalid El Fathi <invent@edena-fr.org>  Wed, 13 Jul 2005 14:46:49 +0200
+
+gip (1.4.0.1-2) unstable; urgency=low
+
+  * Added patch "[INTL:de] German PO file corrections", thanks to Jens Seidel;
+    forwarded patch upstream (Closes: bug#314086).
+
+ -- Khalid El Fathi <invent@edena-fr.org>  Wed, 15 Jun 2005 15:04:47 +0200
+
+gip (1.4.0.1-1) unstable; urgency=low
+
+  * New upstream release.
+  * No new features, it's only compiles with gtkmm-2.4 now.
+
+ -- Khalid El Fathi <invent@edena-fr.org>  Fri,  6 May 2005 22:18:37 +0200
+
+gip (1.2.1.1-1) unstable; urgency=low
+
+  * New upstream release (Closes: bug#303694).
+
+ -- Khalid El Fathi <invent@edena-fr.org>  Fri,  8 Apr 2005 14:45:03 +0200
+
+gip (1.2.0.1-1) unstable; urgency=low
+
+  * Initial Release (Closes: bug#265394).
+  * Adjusted the build.sh to fix INST_* problems.
+
+ -- Khalid El Fathi <invent@edena-fr.org>  Mon, 25 Oct 2004 22:27:20 +0200
+

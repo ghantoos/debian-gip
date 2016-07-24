@@ -1,0 +1,35 @@
+Description: Adds hardening compile-time options, as suggested and
+ described here: https://wiki.debian.org/Hardening
+Author: Ignace Mouzannar <mouzannar@gmail.com>
+Forwarded: no
+Last-Update: 2016-07-23
+Index: gip-1.7.0-1/build.sh
+===================================================================
+--- gip-1.7.0-1.orig/build.sh
++++ gip-1.7.0-1/build.sh
+@@ -248,9 +248,10 @@ fi
+ # Build.
+ ###############################################################################
+ # Compiler/Linker options.
+-CFLAGS="-DHAVE_CONFIG_H -I. -I.. `pkg-config $REQUIRED_LIBS --cflags`"
++export DEB_BUILD_MAINT_OPTIONS="hardening=+all"
++CFLAGS="$(dpkg-buildflags --get CFLAGS) -DHAVE_CONFIG_H -I. -I.. `pkg-config $REQUIRED_LIBS --cflags`"
+ #LFLAGS=`pkg-config $REQUIRED_LIBS --libs`
+-LFLAGS="-lgtkmm-2.4 -latkmm-1.6 -lgtk-x11-2.0 -lglibmm-2.4 -lglib-2.0 -lsigc-2.0"
++LFLAGS="$(dpkg-buildflags --get LDFLAGS) -lgtkmm-2.4 -latkmm-1.6 -lgtk-x11-2.0 -lglibmm-2.4 -lglib-2.0 -lsigc-2.0"
+ 
+ if [ "$PLUGINDIRS" != "" ]; then
+   build_plugins_all $PLUGINDIRS || exit 1
+Index: gip-1.7.0-1/installer/build_files.sh
+===================================================================
+--- gip-1.7.0-1.orig/installer/build_files.sh
++++ gip-1.7.0-1/installer/build_files.sh
+@@ -122,7 +122,7 @@ fi
+ if [ "$SHARED" = "" ]; then
+   # Link as an executable.
+   set -x
+-  g++ $CFLAGS -o $OUTFILE $OBJECTFILES $LFLAGS
++  g++ -pie -fPIE $CFLAGS -o $OUTFILE $OBJECTFILES $LFLAGS
+   ERR="$?"
+   set +x
+ else

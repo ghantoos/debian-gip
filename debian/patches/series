@@ -4,3 +4,6 @@
 40-init_lock_events.diff
 50-installer-build_files-sh.diff
 60-binary-hex-network-update.diff
+70-remove-header.diff
+71-debian-hardening.diff
+72-desktop-file.diff

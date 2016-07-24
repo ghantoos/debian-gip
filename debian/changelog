@@ -1,3 +1,25 @@
+gip (1.7.0-1-4) unstable; urgency=medium
+
+  * debian/patches:
+    - 70-remove-header.diff: remove include to fix FTBFS with newer
+      libsigc++. Patch imported from Ubuntu. (Closes: 805200)
+    - 71-debian-hardening.diff: adds hardening compile-time options,
+      as suggested and described here: https://wiki.debian.org/Hardening.
+    - 72-desktop-file.diff: add Keywords field to the desktop file.
+  * debian/compat:
+    - Bumped compat version from 7 to 9.
+  * debian/control:
+    - Removed deprecated 'Dm-Upload-Allowed' field.
+    - Removed Vcs-Svn and Vcs-Browser as they are out of date.
+    - Removed obsolete hompage url.
+    - Bumped Standards-Version to 3.9.8.
+    - Updated debhelper dependency version to follow new compat version.
+  * debian/gip.menu:
+    - Removed file as recommended here:
+      https://lists.debian.org/debian-devel-announce/2015/09/msg00000.html
+
+ -- Ignace Mouzannar <mouzannar@gmail.com>  Sat, 23 Jul 2016 23:45:32 -0400
+
 gip (1.7.0-1-3) unstable; urgency=low
 
   * debian/patches:

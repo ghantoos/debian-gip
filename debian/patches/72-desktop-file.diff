@@ -1,0 +1,13 @@
+Description: add Keywords field to the desktop file
+Author: Ignace Mouzannar <mouzannar@gmail.com>
+Forwarded: no
+Last-Update: 2016-07-23
+Index: gip-1.7.0-1/gip.desktop.in
+===================================================================
+--- gip-1.7.0-1.orig/gip.desktop.in
++++ gip-1.7.0-1/gip.desktop.in
+@@ -12,3 +12,4 @@ Icon=/usr/share/gip/calculator.png
+ Type=Application
+ Categories=GNOME;GTK;Utility;
+ MimeType=application/x-%APP_SYSNAME%;
++Keywords=gnome;ip;address;calculator

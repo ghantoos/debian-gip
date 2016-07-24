@@ -1,0 +1,16 @@
+Description: remove include to fix FTBFS with newer libsigc++
+Author: Logan Rosen <logan@ubuntu.com>
+Forwarded: no
+Last-Update: 2016-01-05
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- a/src/dispatcher.h
++++ b/src/dispatcher.h
+@@ -23,7 +23,6 @@
+ #ifndef HAVE_DISPATCHER_H
+ #define HAVE_DISPATCHER_H
+ 
+-#include <sigc++/class_slot.h>
+ #include "gui_mainwindow.h"
+ #include "lib_ipv4.h"
+ 
